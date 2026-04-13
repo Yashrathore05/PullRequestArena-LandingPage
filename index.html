@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PullRequest Arena | Benchmark Landing Page</title>
+    <meta
+      name="description"
+      content="PullRequest Arena is a benchmark for evaluating AI agents on pull request review, bug detection, and patch suggestion tasks."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-1" aria-hidden="true"></div>
+    <div class="bg-orb orb-2" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
+
+    <header class="topbar container">
+      <a class="brand" href="#top">
+        <span class="brand-mark">PR</span>
+        <span>PullRequest Arena</span>
+      </a>
+      <nav class="nav">
+        <a href="#overview">Overview</a>
+        <a href="#protocol">Protocol</a>
+        <a href="#results">Results</a>
+        <a href="#dataset">Dataset</a>
+        <a href="#team">Team</a>
+      </nav>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-icon">◐</span>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero container reveal">
+        <p class="eyebrow">AI Code Review Benchmark</p>
+        <h1>
+          Evaluate AI Agents Against Real-World Pull Requests, Bugs, and
+          Adversarial Traps.
+        </h1>
+        <p class="hero-copy">
+          PullRequest Arena is a production-style benchmark built on OpenEnv to
+          measure how reliably models review pull requests, detect vulnerabilities,
+          and submit correct patches under deceptive context.
+        </p>
+        <div class="hero-cta">
+          <a
+            class="btn btn-primary"
+            href="https://huggingface.co/spaces/YashR05/pullrequest-arena"
+            target="_blank"
+            rel="noreferrer"
+            >Open Project Space</a
+          >
+          <a
+            class="btn btn-ghost"
+            href="https://github.com/Yashrathore05"
+            target="_blank"
+            rel="noreferrer"
+            >Open GitHub</a
+          >
+        </div>
+        <div class="badge-row">
+          <span class="badge">OpenEnv Compatible</span>
+          <span class="badge">Python 3.11+</span>
+          <span class="badge">MIT License</span>
+          <span class="badge">HuggingFace Deployed</span>
+        </div>
+        <div class="hero-metrics">
+          <article class="metric-card">
+            <p class="metric-label">Tasks</p>
+            <p class="metric-value">19</p>
+          </article>
+          <article class="metric-card">
+            <p class="metric-label">Top Baseline</p>
+            <p class="metric-value">0.67</p>
+          </article>
+          <article class="metric-card">
+            <p class="metric-label">Completion</p>
+            <p class="metric-value">95%</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container reveal">
+        <h2>Project Links</h2>
+        <p class="section-copy">
+          Explore the live benchmark space and the GitHub profile behind the project.
+        </p>
+        <div class="split">
+          <article class="panel link-panel">
+            <h3>HuggingFace Project Space</h3>
+            <p class="muted">Interactive environment and benchmark playground.</p>
+            <a
+              class="btn btn-primary"
+              href="https://huggingface.co/spaces/YashR05/pullrequest-arena"
+              target="_blank"
+              rel="noreferrer"
+              >Visit Space</a
+            >
+          </article>
+          <article class="panel link-panel">
+            <h3>GitHub</h3>
+            <p class="muted">Source profile and project ecosystem.</p>
+            <a
+              class="btn btn-ghost"
+              href="https://github.com/Yashrathore05"
+              target="_blank"
+              rel="noreferrer"
+              >Visit GitHub</a
+            >
+          </article>
+        </div>
+      </section>
+
+      <section id="overview" class="section container reveal">
+        <h2>What Makes It Different</h2>
+        <p class="section-copy">
+          Instead of only testing code generation, PullRequest Arena tests
+          whether an agent can behave like a senior reviewer: identify subtle
+          failure modes, resist misleading cues, and take the right review action.
+        </p>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Security Bugs</h3>
+            <p>Detect SQL injection patterns, auth bypasses, and unsafe code paths.</p>
+          </article>
+          <article class="card">
+            <h3>Performance Regressions</h3>
+            <p>Spot hidden complexity increases and suspicious runtime behavior changes.</p>
+          </article>
+          <article class="card">
+            <h3>Concurrency Issues</h3>
+            <p>Catch race conditions and thread-safety flaws in realistic diffs.</p>
+          </article>
+          <article class="card">
+            <h3>Adversarial Logic</h3>
+            <p>Handle deceptive PR titles and social-context traps without false approvals.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="protocol" class="section container reveal">
+        <h2>Evaluation Protocol</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>1. Observe PR Context</h3>
+            <p>
+              The agent receives structured inputs including `code_diff`,
+              repository context, test results, CI logs, and prior comments.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h3>2. Choose an Action</h3>
+            <p>
+              Actions are discrete: `approve`, `request_changes`, `comment`,
+              `suggest_fix`, or `submit_patch`.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h3>3. Deterministic Grading</h3>
+            <p>
+              The environment checks logic and patch correctness and assigns
+              normalized rewards from `0.01` to `0.99`.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="results" class="section container reveal">
+        <h2>Baseline Results</h2>
+        <div class="results-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Avg Score</th>
+                <th>Completion Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Qwen/Qwen2.5-7B-Instruct</td>
+                <td>0.67</td>
+                <td>95%</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="muted">
+            Results are archived in <code>results/benchmark_results.json</code>.
+          </p>
+        </div>
+      </section>
+
+      <section id="dataset" class="section container reveal">
+        <h2>Dataset Composition</h2>
+        <div class="split">
+          <article class="panel">
+            <h3>19 Deterministic Tasks</h3>
+            <ul>
+              <li>Easy: 2</li>
+              <li>Medium: 3</li>
+              <li>Hard: 7</li>
+              <li>Adversarial: 6</li>
+              <li>Expert: 1</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Bug Categories</h3>
+            <ul>
+              <li>Syntax errors</li>
+              <li>Security vulnerabilities</li>
+              <li>Performance regressions</li>
+              <li>Concurrency issues</li>
+              <li>Config and middleware mistakes</li>
+              <li>Adversarial logic traps</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="team" class="section container reveal">
+        <h2>Team</h2>
+        <p class="section-copy">
+          Built by <strong>The Last Braincells</strong>.
+        </p>
+        <div class="team-grid">
+          <article class="member-card">
+            <p class="member-role">Core Builder</p>
+            <h3>Yash</h3>
+          </article>
+          <article class="member-card">
+            <p class="member-role">Core Builder</p>
+            <h3>Shreyansh</h3>
+          </article>
+          <article class="member-card">
+            <p class="member-role">Core Builder</p>
+            <h3>Nishant</h3>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container reveal">
+        <h2>Quickstart</h2>
+        <pre><code>git clone https://github.com/Yashrathore05/PullRequest-Arena.git
+cd PullRequest-Arena
+pip install -r requirements.txt
+export HF_TOKEN=your_hf_token_here
+python benchmark.py --model Qwen/Qwen2.5-7B-Instruct</code></pre>
+      </section>
+    </main>
+
+    <footer class="footer container">
+      <p>Built for the Meta &amp; Scaler OpenEnv Hackathon by The Last Braincells.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
