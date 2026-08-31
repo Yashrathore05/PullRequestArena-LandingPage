@@ -15,7 +15,9 @@ function getPreferredTheme() {
 
 setTheme(getPreferredTheme());
 
-themeToggle?.addEventListener("click", () => {
-  const current = root.getAttribute("data-theme");
-  setTheme(current === "dark" ? "light" : "dark");
-});
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const current = root.getAttribute("data-theme");
+    setTheme(current === "dark" ? "light" : "dark");
+  });
+}
